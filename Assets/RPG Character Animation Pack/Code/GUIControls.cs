@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class GUIControls : MonoBehaviour{
-	RPGCharacterController rpgCharacterController;
+	PlayerController rpgCharacterController;
 	[HideInInspector]
 	public bool blockGui;
 	float charge = 0f;
@@ -12,7 +12,7 @@ public class GUIControls : MonoBehaviour{
 	public bool useNavAgent;
 
 	void Start(){
-		rpgCharacterController = GetComponent<RPGCharacterController>();
+		rpgCharacterController = GetComponent<PlayerController>();
 	}
 
 	public void EndClimbing(){
