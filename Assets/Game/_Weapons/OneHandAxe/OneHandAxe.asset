@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9692717085c40f4ca3d36e8097bd0da, type: 3}
+  m_Name: OneHandAxe
+  m_EditorClassIdentifier: 
+  gripTransform: {fileID: 4830610073419352, guid: f0e8c93b0fb7eed46ae540e6f8816e15,
+    type: 2}
+  weaponPrefab: {fileID: 1063628022496130, guid: a6e4e3e232ff372409652f5e758dd538,
+    type: 2}
+  attackAnimation: {fileID: 7400000, guid: 4cc7a6346b1003244b110b3324155da7, type: 3}
+  minTimeBetweenHits: 0.5
+  maxAttackRange: 2
+  additionalDamage: 20
