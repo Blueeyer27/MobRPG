@@ -16,7 +16,13 @@ public class ThirdPersonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (playerController == null)
+            playerController = GetComponent<PlayerController>();
+
+        if (playerController.rightWeapon != 9)
+        {
+            StartCoroutine(playerController._SwitchWeapon(9));
+        }
     }
 
     // Update is called once per frame
@@ -28,7 +34,22 @@ public class ThirdPersonController : MonoBehaviour
 
         CameraAngle += touchField.TouchDist.x * CameraAngleSpeed;
 
-        Camera.main.transform.position = transform.position + Quaternion.AngleAxis(CameraAngle, Vector3.up) * new Vector3(0, 5, 12);
+        Camera.main.transform.position = transform.position + Quaternion.AngleAxis(CameraAngle, Vector3.up) * new Vector3(0, 4, 8);
         Camera.main.transform.rotation = Quaternion.LookRotation(transform.position + Vector3.up * 2f - Camera.main.transform.position, Vector3.up);
+    }
+
+    public void Attack()
+    {
+        if (playerController.canAction && !playerController.isRelax && playerController.isGrounded && !playerController.isBlocking)
+        {
+            //ATTACK RIGHT
+            if (playerController.weapon == WeaponType.RIFLE || playerController.weapon != WeaponType.ARMED || (playerController.weapon == WeaponType.ARMED && playerController.rightWeapon != 0) || playerController.weapon == WeaponType.ARMEDSHIELD)
+            {
+                if (playerController.weapon != WeaponType.SHIELD)
+                {
+                    playerController.Attack(2);
+                }
+            }
+        }
     }
 }
