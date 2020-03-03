@@ -963,7 +963,7 @@ public class PlayerController : MonoBehaviour{
 						//Right sword has 6 attacks
 						else if(rightWeapon == 9){
 							attackNumber = Random.Range(7, 12);
-                            animationEffects.InstantiateEffect(attackNumber - 7);
+                            //animationEffects.InstantiateEffect(attackNumber - 7);
                         }
 						else{
 							attackNumber = Random.Range(3, maxAttacks + 3);
