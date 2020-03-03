@@ -40,12 +40,19 @@ public class AnimationEventEffects : MonoBehaviour {
 
     }
             
-    public void InstantiateEffect(int EffectNumber)
+    public void InstantiateEffect(int EffectNumber, float delay = 0)
     {
         if(Effects == null || Effects.Length <= EffectNumber)
         {
             Debug.LogError("Incorrect effect number or effect is null");
         }
+
+        StartCoroutine(PlayEffect(EffectNumber, delay));
+    }
+
+    private IEnumerator PlayEffect(int EffectNumber, float delay)
+    {
+        yield return new WaitForSeconds(delay);
 
         var instance = Instantiate(Effects[EffectNumber].Effect, Effects[EffectNumber].StartPositionRotation.position, Effects[EffectNumber].StartPositionRotation.rotation);
 
@@ -55,6 +62,7 @@ public class AnimationEventEffects : MonoBehaviour {
             instance.transform.localPosition = Vector3.zero;
             instance.transform.localRotation = new Quaternion();
         }
+
         Destroy(instance, Effects[EffectNumber].DestroyAfter);
     }
 }
