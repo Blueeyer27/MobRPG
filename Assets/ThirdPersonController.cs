@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ThirdPersonController : MonoBehaviour
 {
     public FixedJoystick leftJoystick;
     public FixedTouchField touchField;
+
+    public Button attackButton;
 
     public PlayerController playerController;
 
@@ -19,9 +22,14 @@ public class ThirdPersonController : MonoBehaviour
         if (playerController == null)
             playerController = GetComponent<PlayerController>();
 
-        if (playerController.rightWeapon != 9)
+        if (attackButton != null)
         {
-            StartCoroutine(playerController._SwitchWeapon(9));
+            attackButton.onClick.AddListener(Attack);
+        }
+
+        if (playerController.leftWeapon != 4)
+        {
+            StartCoroutine(playerController._SwitchWeapon((int)WeaponType.TWOHANDBOW));
         }
     }
 
@@ -34,7 +42,7 @@ public class ThirdPersonController : MonoBehaviour
 
         CameraAngle += touchField.TouchDist.x * CameraAngleSpeed;
 
-        Camera.main.transform.position = transform.position + Quaternion.AngleAxis(CameraAngle, Vector3.up) * new Vector3(0, 6, -8);
+        Camera.main.transform.position = transform.position + Quaternion.AngleAxis(CameraAngle, Vector3.up) * new Vector3(0, 4, -4);
         Camera.main.transform.rotation = Quaternion.LookRotation(transform.position + Vector3.up * 2f - Camera.main.transform.position, Vector3.up);
     }
 
@@ -42,6 +50,11 @@ public class ThirdPersonController : MonoBehaviour
     {
         if (playerController.canAction && !playerController.isRelax && playerController.isGrounded && !playerController.isBlocking)
         {
+            //ATTACK LEFT
+            if (playerController.weapon == WeaponType.SHIELD || playerController.weapon == WeaponType.RIFLE || playerController.weapon != WeaponType.ARMED || (playerController.weapon == WeaponType.ARMED && playerController.leftWeapon != 0) && playerController.leftWeapon != 7)
+            {
+                playerController.Attack(1);
+            }
             //ATTACK RIGHT
             if (playerController.weapon == WeaponType.RIFLE || playerController.weapon != WeaponType.ARMED || (playerController.weapon == WeaponType.ARMED && playerController.rightWeapon != 0) || playerController.weapon == WeaponType.ARMEDSHIELD)
             {
