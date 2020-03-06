@@ -9732,6 +9732,36 @@ SkinnedMeshRenderer:
     m_Center: {x: -27.76683, y: -2.6502748, z: 7.2700005}
     m_Extent: {x: 19.003693, y: 7.9434285, z: 14.300514}
   m_DirtyAABB: 0
+--- !u!1 &1364370934919017393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5021814881697683811}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5021814881697683811
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364370934919017393}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.348, z: 1.171}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7731954298663065590}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1393661672758523452
 GameObject:
   m_ObjectHideFlags: 0
@@ -56617,6 +56647,7 @@ Transform:
   - {fileID: 7731954298663009498}
   - {fileID: 7731954298662980466}
   - {fileID: 7731954298663008240}
+  - {fileID: 5021814881697683811}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -56721,6 +56752,9 @@ MonoBehaviour:
   touchField: {fileID: 0}
   attackButton: {fileID: 0}
   playerController: {fileID: 7731954298662702815}
+  firePoint: {fileID: 5021814881697683811}
+  fireSkill: {fileID: 6126105814711739604, guid: ee20099709d9d468b998057be3e789c1,
+    type: 3}
 --- !u!114 &7731954298662702815
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,6 +12,9 @@ public class ThirdPersonController : MonoBehaviour
 
     public PlayerController playerController;
 
+    public Transform firePoint;
+    public GameObject fireSkill;
+
     protected float CameraAngle;
     protected float CameraAngleSpeed = 0.2f;
 
@@ -54,9 +57,14 @@ public class ThirdPersonController : MonoBehaviour
             if (playerController.weapon == WeaponType.SHIELD || playerController.weapon == WeaponType.RIFLE || playerController.weapon != WeaponType.ARMED || (playerController.weapon == WeaponType.ARMED && playerController.leftWeapon != 0) && playerController.leftWeapon != 7)
             {
                 playerController.Attack(1);
+
+                if (playerController.weapon == WeaponType.TWOHANDBOW)
+                {
+                    StartCoroutine(FireSkill());
+                }
             }
             //ATTACK RIGHT
-            if (playerController.weapon == WeaponType.RIFLE || playerController.weapon != WeaponType.ARMED || (playerController.weapon == WeaponType.ARMED && playerController.rightWeapon != 0) || playerController.weapon == WeaponType.ARMEDSHIELD)
+            else if (playerController.weapon == WeaponType.RIFLE || playerController.weapon != WeaponType.ARMED || (playerController.weapon == WeaponType.ARMED && playerController.rightWeapon != 0) || playerController.weapon == WeaponType.ARMEDSHIELD)
             {
                 if (playerController.weapon != WeaponType.SHIELD)
                 {
@@ -64,5 +72,20 @@ public class ThirdPersonController : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator FireSkill()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if (fireSkill == null || firePoint == null)
+        {
+            yield break;
+        }
+
+        var effect = Instantiate(fireSkill, firePoint.transform.position, transform.rotation);
+
+        yield return new WaitForSeconds(1f);
+
+        Destroy(effect);
     }
 }

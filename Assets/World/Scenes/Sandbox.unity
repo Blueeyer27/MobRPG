@@ -23203,6 +23203,22 @@ PrefabInstance:
       propertyPath: attackButton
       value: 
       objectReference: {fileID: 1866756965}
+    - target: {fileID: 3025797760257470855, guid: 9e0bad613c33047369e6d5c30c0a2fb0,
+        type: 3}
+      propertyPath: firePoint
+      value: 
+      objectReference: {fileID: 1106056009}
+    - target: {fileID: 3025797760257470855, guid: 9e0bad613c33047369e6d5c30c0a2fb0,
+        type: 3}
+      propertyPath: fireSkill
+      value: 
+      objectReference: {fileID: 6126105814711739604, guid: ee20099709d9d468b998057be3e789c1,
+        type: 3}
+    - target: {fileID: 960596240432786204, guid: 9e0bad613c33047369e6d5c30c0a2fb0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9e0bad613c33047369e6d5c30c0a2fb0, type: 3}
 --- !u!1001 &1038995239
@@ -24618,6 +24634,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 441964, guid: 6392dda4ffbb132428b82e0ca46ee23d,
     type: 3}
   m_PrefabInstance: {fileID: 1705942625}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1106056009 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 504880858190423556, guid: 9e0bad613c33047369e6d5c30c0a2fb0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1033992079}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1106642567
 PrefabInstance:
