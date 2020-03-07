@@ -18,6 +18,8 @@ public class ThirdPersonController : MonoBehaviour
     protected float CameraAngle;
     protected float CameraAngleSpeed = 0.2f;
 
+    public Transform target;
+
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +55,11 @@ public class ThirdPersonController : MonoBehaviour
     {
         if (playerController.canAction && !playerController.isRelax && playerController.isGrounded && !playerController.isBlocking)
         {
+            if (target != null)
+            {
+                transform.LookAt(target.transform);
+            }
+
             //ATTACK LEFT
             if (playerController.weapon == WeaponType.SHIELD || playerController.weapon == WeaponType.RIFLE || playerController.weapon != WeaponType.ARMED || (playerController.weapon == WeaponType.ARMED && playerController.leftWeapon != 0) && playerController.leftWeapon != 7)
             {

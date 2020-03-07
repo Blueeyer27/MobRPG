@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,7 @@ public class AIController : MonoBehaviour
     public GameObject target;
     public Camera sceneCamera;
 
-    public float runSpeed = 5;
+    public float runSpeed = 4;
 
     public WeaponType weaponType;
     public GameObject weapon;
@@ -19,15 +20,19 @@ public class AIController : MonoBehaviour
     private bool isDead;
     public bool isMoving;
 
+    private Vector3 startPosition;
+
+    public Action<AIController> OnSelected;
+
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
 
-        //TODO: weaponType is not actually totally same ase weaponNumber be careful...
+        //TODO: weaponType is not actually totally same as weaponNumber be careful...
         _UnSheathWeapon((int)weaponType);
 
-        animator.SetBool("Moving", true);
+        startPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -42,58 +47,87 @@ public class AIController : MonoBehaviour
             return;
 
         FollowTarget();
-
-        if (target != null)
-        {
-            transform.LookAt(target.transform.position);
-        }
     }
 
     private void FollowTarget()
     {
         if (isDead || !canMove || target == null)
         {
-            if (isMoving)
+            if (Vector3.Distance(transform.position, startPosition) > 1f)
             {
-                animator.SetBool("Moving", false);
-                isMoving = false;
+                ReturnToStartPosition();
+            }
+            else
+            {
+                UpdateMoving(false);
             }
 
             return;
         }
 
         var targetPosition = target.transform.position;
-        if (Vector3.Distance(transform.position, targetPosition) > 2f)
+        var distanceToTarget = Vector3.Distance(transform.position, targetPosition);
+        Debug.Log(distanceToTarget);
+
+        if (distanceToTarget > 20f || Vector3.Distance(transform.position, startPosition) > 30f)
+        {
+            // AI lost target or ran too far away, let's return back
+            target = null;
+            return;
+        }
+        else if (distanceToTarget > 2f)
         {
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, runSpeed * Time.deltaTime);
-
-            var rb = GetComponent<Rigidbody>();
-            //Get local velocity of charcter
-            float velocityXel = transform.InverseTransformDirection(rb.velocity).x;
-            float velocityZel = transform.InverseTransformDirection(rb.velocity).z;
-
-            Debug.Log("X: " + velocityXel / runSpeed);
-            Debug.Log("Z: " + velocityZel / runSpeed);
-            //Update animator with movement values
-            animator.SetFloat("Velocity X", 0);
-            animator.SetFloat("Velocity Z", 1);
-
-            if (!isMoving)
-            {
-                animator.SetBool("Moving", true);
-                isMoving = true;
-            }
+            UpdateMoving(true);
         }
         else
         {
-            if (isMoving)
-            {
-                animator.SetBool("Moving", false);
-                isMoving = false;
-            }
-
+            UpdateMoving(false);
             Attack();
         }
+
+        // Only in cases when we still interact with target (running/attack)
+        if (target != null)
+        {
+            transform.LookAt(target.transform.position);
+        }
+    }
+
+    private void ReturnToStartPosition()
+    {
+        if (Vector3.Distance(transform.position, startPosition) < 1f)
+        {
+            UpdateMoving(false);
+            return;
+        }
+
+        transform.LookAt(startPosition);
+        transform.position = Vector3.MoveTowards(transform.position, startPosition, runSpeed * Time.deltaTime);
+    }
+
+    private void UpdateMoving(bool move)
+    {
+        animator.SetFloat("Velocity X", 0);
+        animator.SetFloat("Velocity Z", move ? 1 : 0);
+
+        if (move != isMoving)
+        {
+            isMoving = move;
+            animator.SetBool("Moving", isMoving);
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        if (OnSelected != null)
+        {
+            OnSelected(this);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Ouch");
     }
 
     private void Attack()
@@ -101,7 +135,7 @@ public class AIController : MonoBehaviour
         animator.SetInteger("AttackSide", 2);
 
         int maxAttacks = 6;
-        int attackNumber = Random.Range(1, maxAttacks);
+        int attackNumber = UnityEngine.Random.Range(1, maxAttacks);
         animator.SetTrigger("Attack" + (attackNumber).ToString() + "Trigger");
 
         StartCoroutine(_Lock(true, true, true, 0, 1.5f));

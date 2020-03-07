@@ -100,8 +100,7 @@ public class ProjectileMoveScript : MonoBehaviour {
 
     public void RotateToMouse(GameObject obj, Vector3 destination)
     {
-
-         Vector3 direction;
+        Vector3 direction;
         Quaternion rotation;
         direction = destination - obj.transform.position;
         rotation = Quaternion.LookRotation(direction);
