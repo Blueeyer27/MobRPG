@@ -20,7 +20,8 @@ MonoBehaviour:
 
     Damage: {DAMAGE}
 
-    Cast Time: {CASTTIME}
+    Cast
+    Time: {CASTTIME}
 
     Cooldown: {COOLDOWN}
 
@@ -33,33 +34,33 @@ MonoBehaviour:
   predecessorLevel: 1
   requiredWeaponCategory: WeaponBow
   requiredLevel:
-    bonusPerLevel: 0
     baseValue: 0
+    bonusPerLevel: 0
   requiredSkillExperience:
-    bonusPerLevel: 0
     baseValue: 0
+    bonusPerLevel: 0
   maxLevel: 1
   manaCosts:
-    bonusPerLevel: 0
     baseValue: 0
+    bonusPerLevel: 0
   castTime:
+    baseValue: 1
     bonusPerLevel: 0
-    baseValue: 1.5
   cooldown:
-    bonusPerLevel: 0
     baseValue: 0
-  castRange:
     bonusPerLevel: 0
+  castRange:
     baseValue: 15
+    bonusPerLevel: 0
   castSound: {fileID: 0}
   damage:
-    bonusPerLevel: 0
     baseValue: 5
+    bonusPerLevel: 0
   stunChance:
-    bonusPerLevel: 0
     baseValue: 0
+    bonusPerLevel: 0
   stunTime:
-    bonusPerLevel: 0
     baseValue: 0
+    bonusPerLevel: 0
   projectile: {fileID: 114423741089805692, guid: 0f4948efce538432191cef46aef01d26,
     type: 3}
