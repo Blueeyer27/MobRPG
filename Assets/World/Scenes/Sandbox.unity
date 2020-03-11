@@ -35188,7 +35188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1635012200}
   m_Layer: 0
-  m_Name: _Terrain
+  m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47726,6 +47726,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7664952795105186730, guid: 115c551d105dd4cb0912942395eddccf,
+        type: 3}
+      propertyPath: runSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8065171526326835743, guid: 115c551d105dd4cb0912942395eddccf,
         type: 3}
       propertyPath: m_Name
@@ -47825,11 +47830,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7664952795105186730, guid: 115c551d105dd4cb0912942395eddccf,
-        type: 3}
-      propertyPath: runSpeed
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 115c551d105dd4cb0912942395eddccf, type: 3}
