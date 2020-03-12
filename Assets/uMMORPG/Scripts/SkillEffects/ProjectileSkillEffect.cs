@@ -11,6 +11,8 @@ using Mirror;
 public class ProjectileSkillEffect : SkillEffect
 {
     public float speed = 35;
+
+    public GameObject projectileHitEffect;
     [HideInInspector] public int damage = 1; // set by skill
     [HideInInspector] public float stunChance; // set by skill
     [HideInInspector] public float stunTime; // set by skill
@@ -61,6 +63,13 @@ public class ProjectileSkillEffect : SkillEffect
                     // find the skill that we casted this effect with
                     caster.DealDamageAt(target, caster.damage + damage, stunChance, stunTime);
                 }
+
+                if (projectileHitEffect != null)
+                {
+                    GameObject hitEffect = Instantiate(projectileHitEffect, goal, caster.effectMount.rotation);
+                    NetworkServer.Spawn(hitEffect);
+                }
+
                 NetworkServer.Destroy(gameObject);
             }
         }

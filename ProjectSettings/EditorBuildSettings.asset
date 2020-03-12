@@ -6,4 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/uMMORPG/Scenes/World.unity
+    path: Assets/World/Scenes/MainScene.unity
+    guid: 86db94a5055c14840a4cf658b1b0ee44
+  m_configObjects: {}

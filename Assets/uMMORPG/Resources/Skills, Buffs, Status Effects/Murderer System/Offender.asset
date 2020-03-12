@@ -17,7 +17,8 @@ MonoBehaviour:
 
     You attacked someone innocent recently.
 
-    Other players can kill you without a penalty for a while now!
+    Other
+    players can kill you without a penalty for a while now!
 
 
     Buff Time: {BUFFTIME}'
@@ -48,37 +49,37 @@ MonoBehaviour:
     baseValue: 0
     bonusPerLevel: 0
   castSound: {fileID: 0}
-  bonusHealthMax:
+  healthMaxBonus:
     baseValue: 0
     bonusPerLevel: 0
-  bonusManaMax:
+  manaMaxBonus:
     baseValue: 0
     bonusPerLevel: 0
-  bonusDamage:
+  damageBonus:
     baseValue: 0
     bonusPerLevel: 0
-  bonusDefense:
+  defenseBonus:
     baseValue: 0
     bonusPerLevel: 0
-  bonusBlockChance:
+  blockChanceBonus:
     baseValue: 0
     bonusPerLevel: 0
-  bonusCriticalChance:
+  criticalChanceBonus:
     baseValue: 0
     bonusPerLevel: 0
-  bonusHealthPercentPerSecond:
+  healthPercentPerSecondBonus:
     baseValue: 0
     bonusPerLevel: 0
-  bonusManaPercentPerSecond:
+  manaPercentPerSecondBonus:
     baseValue: 0
     bonusPerLevel: 0
-  bonusSpeed:
+  speedBonus:
     baseValue: 0
     bonusPerLevel: 0
   buffTime:
     baseValue: 60
     bonusPerLevel: 0
-  remainAfterDeath: 1
+  remainAfterDeath: 0
   effect: {fileID: 0}
   canBuffSelf: 0
   canBuffOthers: 0

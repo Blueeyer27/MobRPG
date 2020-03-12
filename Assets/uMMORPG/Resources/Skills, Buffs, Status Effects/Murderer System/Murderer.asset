@@ -17,7 +17,8 @@ MonoBehaviour:
 
     You murdered someone innocent recently.
 
-    Other players can kill you without a penalty for a while now, and you will constantly
+    Other
+    players can kill you without a penalty for a while now, and you will constantly
     lose health!
 
 
@@ -81,7 +82,7 @@ MonoBehaviour:
   buffTime:
     baseValue: 3600
     bonusPerLevel: 0
-  remainAfterDeath: 1
+  remainAfterDeath: 0
   effect: {fileID: 0}
   canBuffSelf: 0
   canBuffOthers: 0

@@ -165,7 +165,7 @@ PlayerSettings:
     Android: com.Company.ProductName
     Standalone: unity.noobtuts.com.uMMORPG
     Tizen: com.Company.ProductName
-    iPhone: com.Company.ProductName
+    iPhone: com.valhalla.age
     tvOS: com.Company.ProductName
   buildNumber:
     iPhone: 0
@@ -633,7 +633,7 @@ PlayerSettings:
     17: MOBILE_INPUT
     20: MOBILE_INPUT
   platformArchitecture:
-    iPhone: 2
+    iPhone: 1
   scriptingBackend:
     Android: 0
     Standalone: 0
@@ -654,7 +654,7 @@ PlayerSettings:
     Android: 3
     Standalone: 3
     WebGL: 3
-    iPhone: 3
+    iPhone: 6
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: move
